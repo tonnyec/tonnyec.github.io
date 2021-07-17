@@ -5,59 +5,217 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="style.css" rel="stylesheet">
         <title>Resortes</title>
     </head>
 
     <body>
-        <h1>Factor de seguridad del resorte</h1>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text">Fmin (Fuerza Min)</span>
-            <input id="fuerza-min" type="number" class="form-control" value="175">
-        </div>
+        <div class="container">
+            <br>
+            <h1 class="text-center">DISEÑO DE RESORTES</h1>
+            <br>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text">Fmax (Fuerza Max)</span>
-            <input id="fuerza-max" type="number" class="form-control" value="225">
-        </div>
+            <div class="row">
+                <div class="col col-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Nro Decimales</span>
+                        <input id="txt-decimales" type="text" class="form-control text-end" value="4">
+                    </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text">y (Deflexión)</span>
-            <input id="deflexion" type="number" class="form-control" value="3">
-        </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Fmin (Fuerza Min)</span>
+                        <input id="fuerza-min" type="text" class="form-control text-end" value="175">
+                    </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text">% (Porcentaje Choque)</span>
-            <input id="porcentaje-choque" type="number" class="form-control" value="0.15">
-        </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Fmax (Fuerza Max)</span>
+                        <input id="fuerza-max" type="text" class="form-control text-end" value="225">
+                    </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text">d (Diámetro)</span>
-            <input id="diametro" type="number" class="form-control" value="0.2810">
-        </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">y (Deflexión)</span>
+                        <input id="deflexion" type="text" class="form-control text-end" value="3">
+                    </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text">C (Índice de resorte)</span>
-            <input id="c" type="number" class="form-control" value="5">
-        </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">% (Porcentaje Choque)</span>
+                        <input id="porcentaje-choque" type="text" class="form-control text-end" value="0.15">
+                    </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text">A (Coeficiente)</span>
-            <input id="a" type="number" class="form-control" value="141040">
-        </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">d (Diámetro)</span>
+                        <input id="diametro" type="text" class="form-control text-end" value="0.2810">
+                    </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text">B (Coeficiente)</span>
-            <input id="b" type="number" class="form-control" value="-0.1822">
-        </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">C (Índice de resorte)</span>
+                        <input id="c" type="text" class="form-control text-end" value="5">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">A (Coeficiente)</span>
+                        <input id="a" type="text" class="form-control text-end" value="141040">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">B (Coeficiente)</span>
+                        <input id="b" type="text" class="form-control text-end" value="-0.1822">
+                    </div>
+
+                    <div class="form-check form-switch">
+                        <input id="chk-granallado" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                        <label class="form-check-label" for="flexSwitchCheckChecked">Resorte granallado</label>
+                    </div>
+                    <br>
+
+                    <div class="mb-6">
+                        <div class="mb-3 text-center">
+                            <button id="btn_calcular" type="button" class="btn btn-primary">Carga estática</button>
+                        </div>
+                        <div class="mb-3 text-center">
+                            <button id="btn_calcular_fatiga" type="button" class="btn btn-danger">Carga cíclica</button>
+                        </div>
+                        <div class="mb-3 text-center">
+                            <button id="btn_nuevo" type="button" class="btn btn-warning">Nuevo Calculo</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col col-3">
+                    <div class="col-12">
+                        <label class="form-label">Diámetro medio (D)</label>
+                        <input id="txt-diametro-medio" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Factor cortante directo (Ks)</label>
+                        <input id="txt-ks" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Resistencia a la tracción del alambre (Sut)</label>
+                        <input id="txt-sut" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Resistencia al corte del resorte (Sys)</label>
+                        <input id="txt-sys" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Constante del resorte (k)</label>
+                        <input id="txt-k" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">número de espiras activas (Na)</label>
+                        <input id="txt-na" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Número de espiras total (Nt)</label>
+                        <input id="txt-nt" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Longitud sólida (Ls) del resorte</label>
+                        <input id="txt-ls" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                </div>
+
+                <div class="col col-3">
+                    <div class="col-12">
+                        <label class="form-label">Longitud de trabajo (y trabajo )</label>
+                        <input id="txt-y-trabajo" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Longitud de choque (y choque )</label>
+                        <input id="txt-y-choque" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Longitud de inicial (y inicial )</label>
+                        <input id="txt-y-inicial" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Longitud libre del resorte</label>
+                        <input id="txt-lf" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Longitud de cierre</label>
+                        <input id="txt-y-cierre" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Fuerza de cierre</label>
+                        <input id="txt-f-cierre" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Esfuerzo cortante máximo (τ máx)</label>
+                        <input id="txt-tmax" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Factor de seguridad (ns)</label>
+                        <input id="txt-ns" type="text" class="form-control text-end" readonly>
+                    </div>
+                </div>
+
+                <div class="col col-3">
+                    <div class="col-12">
+                        <label class="form-label">Factor de Wahl (KW )</label>
+                        <input id="txt-kw" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Fuerza media(Fm)</label>
+                        <input id="txt-fm" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Fuerza Alternante (Fa)</label>
+                        <input id="txt-fa" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Esfuerzo cortante inicial (ti)</label>
+                        <input id="txt-ti" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Esfuerzo cortante medio (tm)</label>
+                        <input id="txt-tm" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Esfuerzo cortante alternante (ta)</label>
+                        <input id="txt-ta" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Resistencia última del resorte (Sus )</label>
+                        <input id="txt-sus" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Resistencia límite a la fatiga (Ses)</label>
+                        <input id="txt-ses" type="text" class="form-control text-end" readonly>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Factor de seguridad a la fatiga (nf)</label>
+                        <input id="txt-nf" type="text" class="form-control text-end" readonly>
+                    </div>
+                </div>
 
 
-        <div class="mb-3">
-            <button id="btn_calcular" type="button" class="btn btn-primary">Calcular</button>
-        </div>
-
-        <div class="mb-3">
-            <button id="btn_calcular_fatiga" type="button" class="btn btn-primary">Calcular Fatiga</button>
+            </div>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
