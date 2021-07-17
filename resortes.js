@@ -64,7 +64,7 @@ $("#btn_calcular_fatiga").click(function () {
   var fmin = parseFloat($("#fuerza-min").val()); // Fi
   var fmax = parseFloat($("#fuerza-max").val()); // Fm
   let fi = fmin;
-  
+
   var d = $("#diametro").val();
   var y = $("#deflexion").val();
   var porcentaje_choque = $("#porcentaje-choque").val();
@@ -104,6 +104,4 @@ $("#btn_calcular_fatiga").click(function () {
 
   var nf = (ses * (sus - ti)) / (ses * (tm - ti) + sus * ta);
   console.log(nf);
-
-  
 });
