@@ -1,0 +1,5 @@
+#!/bin/bash
+
+hostname -s | figlet | /usr/games/lolcat -f
+
+echo ""
