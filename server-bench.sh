@@ -49,5 +49,4 @@ rm /tmp/write_test_file
 # Borrar la IP del servidor del archivo de log
 sed -i "/${SERVER_IP}/d" $LOGFILE
 
-# Indicar que las pruebas han finalizado
-echo "Las pruebas de rendimiento han finalizado. Los resultados están guardados en $LOGFILE" | tee -a $LOGFILE
+echo "Las pruebas de rendimiento han finalizado. Los resultados están guardados en $LOGFILE"
