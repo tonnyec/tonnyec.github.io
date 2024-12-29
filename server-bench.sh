@@ -49,4 +49,7 @@ rm /tmp/write_test_file
 # Borrar la IP del servidor del archivo de log
 sed -i "/${SERVER_IP}/d" $LOGFILE
 
+# Eliminar direcciones IP del archivo de log
+sed -i 's/\b[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}\b/YYY/g' $LOGFILE
+
 echo "Las pruebas de rendimiento han finalizado. Los resultados están guardados en $LOGFILE"
