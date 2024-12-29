@@ -4,7 +4,7 @@
 HOSTNAME=$(hostname -a)
 
 # Nombre del archivo de log
-LOGFILE="${HOSTNAME}-sysbench.log"
+LOGFILE="${HOSTNAME}-sysbench.txt"
 
 # Actualizar los paquetes e instalar las herramientas necesarias
 apt update
