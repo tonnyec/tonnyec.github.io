@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Obtener el hostname de la máquina
-HOSTNAME=$(hostname)
+HOSTNAME=$(hostname -a)
 
 # Nombre del archivo de log
 LOGFILE="${HOSTNAME}-sysbench.log"
